@@ -169,3 +169,38 @@ tools/forge/forge.config.js
 ```
 
 For further information, you can visit [Electron Forge Configuration](https://www.electronforge.io/configuration)
+
+## Debug For Neovim
+
+[nvim-dap-vscode-js](https://github.com/mxsdev/nvim-dap-vscode-js)
+
+```lua
+dap.configurations.typescript = {
+  {
+    name = "Electron-forge Main",
+    type = "pwa-node",
+    request = "launch",
+    cwd = "${workspaceFolder}",
+    webRoot = "${workspaceFolder}",
+    runtimeExecutable = "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-nix",
+    windows = {
+      runtimeExecutable = "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
+    },
+    runtimeArgs = {},
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+    },
+  },
+}
+dap.configurations.typescriptreact = { -- change to typescript if needed
+  {
+    name = "Electron-forge Render",
+    type = "pwa-chrome",
+    request = "attach",
+    port = 9222,
+    webRoot = "${workspaceFolder}",
+  },
+}
+```
+
