@@ -21,8 +21,8 @@ export function createAppWindow(): BrowserWindow {
     autoHideMenuBar: true,
     icon: path.resolve('assets/images/appIcon.ico'),
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      contextIsolation: false,
       nodeIntegrationInWorker: false,
       nodeIntegrationInSubFrames: false,
       preload: APP_WINDOW_PRELOAD_WEBPACK_ENTRY,
